@@ -14,5 +14,15 @@ describe("Auth - Register", () => {
     expect(response.body).toHaveProperty("id");
     expect(response.body).toHaveProperty("email", "test@example.com");
   });
-});
 
+  it("should return 400 if email is missing", async () => {
+    const response = await request(app)
+      .post("/api/auth/register")
+      .send({
+        password: "StrongPass123!"
+      });
+
+    expect(response.status).toBe(400);
+    expect(response.body).toHaveProperty("message");
+  });
+});
