@@ -13,8 +13,11 @@ export function registerUser(req: Request, res: Response) {
     });
   }
 
-  const user = createUser(email);
+  const user = createUser(email, password);
 
-  res.status(201).json(user);
+  res.status(201).json({
+    id: user.id,
+    email: user.email
+  });
 }
 

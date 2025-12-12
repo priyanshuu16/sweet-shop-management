@@ -2,7 +2,7 @@ import request from "supertest";
 import app from "../../app";
 
 describe("Auth - Register", () => {
-  it("should register a new user and return 201", async () => {
+  it("should register a new user and return 201 without password", async () => {
     const response = await request(app)
       .post("/api/auth/register")
       .send({
@@ -13,6 +13,7 @@ describe("Auth - Register", () => {
     expect(response.status).toBe(201);
     expect(response.body).toHaveProperty("id");
     expect(response.body).toHaveProperty("email", "test@example.com");
+    expect(response.body).not.toHaveProperty("password");
   });
 
   it("should return 400 if email is missing", async () => {
