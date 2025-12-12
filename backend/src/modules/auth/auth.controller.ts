@@ -1,18 +1,15 @@
 import { Request, Response } from "express";
 import { createUser } from "./auth.service";
+import { validateRegisterInput } from "./auth.validator";
 
 export function registerUser(req: Request, res: Response) {
   const { email, password } = req.body;
 
-  if (!email) {
-    return res.status(400).json({
-      message: "Email is required"
-    });
-  }
+  const validationError = validateRegisterInput(email, password);
 
-  if (!password) {
+  if (validationError) {
     return res.status(400).json({
-      message: "Password is required"
+      message: validationError
     });
   }
 
