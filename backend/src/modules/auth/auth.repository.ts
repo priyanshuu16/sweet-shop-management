@@ -28,5 +28,18 @@ export class AuthRepository {
       passwordHash: user.passwordHash
     };
   }
-}
 
+  async findByEmail(email: string): Promise<UserEntity | null> {
+    const user = await prisma.user.findUnique({
+      where: { email }
+    });
+
+    if (!user) return null;
+
+    return {
+      id: user.id,
+      email: user.email,
+      passwordHash: user.passwordHash
+    };
+  }
+}
