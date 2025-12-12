@@ -25,4 +25,16 @@ describe("Auth - Register", () => {
     expect(response.status).toBe(400);
     expect(response.body).toHaveProperty("message");
   });
+
+  it("should return 400 if password is missing", async () => {
+    const response = await request(app)
+      .post("/api/auth/register")
+      .send({
+        email: "test@example.com"
+      });
+
+    expect(response.status).toBe(400);
+    expect(response.body).toHaveProperty("message");
+  });
 });
+
