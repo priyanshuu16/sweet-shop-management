@@ -1,0 +1,18 @@
+import request from "supertest";
+import app from "../../app";
+
+describe("Auth - Register", () => {
+  it("should register a new user and return 201", async () => {
+    const response = await request(app)
+      .post("/api/auth/register")
+      .send({
+        email: "test@example.com",
+        password: "StrongPass123!"
+      });
+
+    expect(response.status).toBe(201);
+    expect(response.body).toHaveProperty("id");
+    expect(response.body).toHaveProperty("email", "test@example.com");
+  });
+});
+
