@@ -1,14 +1,18 @@
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
+import { AuthRepository } from "./auth.repository";
 
-const SALT_ROUNDS = 10;
+export class AuthService {
+  private repository = new AuthRepository();
 
-export function createUser(email: string, password: string) {
-  const passwordHash = bcrypt.hashSync(password, SALT_ROUNDS);
+  async createUser(email: string, password: string) {
+    const passwordHash = await bcrypt.hash(password, 10);
 
-  return {
-    id: "temp-id",
-    email,
-    passwordHash
-  };
+    const user = await this.repository.createUser({
+      email,
+      passwordHash
+    });
+
+    return user;
+  }
 }
 

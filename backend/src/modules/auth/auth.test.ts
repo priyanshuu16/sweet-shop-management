@@ -2,17 +2,19 @@ import request from "supertest";
 import app from "../../app";
 
 describe("Auth - Register", () => {
-  it("should register a new user and return 201 without password", async () => {
+  it("should register a new user and return 201", async () => {
+    const email = `api-${Date.now()}@example.com`;
+
     const response = await request(app)
       .post("/api/auth/register")
       .send({
-        email: "test@example.com",
+        email,
         password: "StrongPass123!"
       });
 
     expect(response.status).toBe(201);
     expect(response.body).toHaveProperty("id");
-    expect(response.body).toHaveProperty("email", "test@example.com");
+    expect(response.body).toHaveProperty("email", email);
     expect(response.body).not.toHaveProperty("password");
   });
 
@@ -31,7 +33,7 @@ describe("Auth - Register", () => {
     const response = await request(app)
       .post("/api/auth/register")
       .send({
-        email: "test@example.com"
+        email: `missing-pass-${Date.now()}@example.com`
       });
 
     expect(response.status).toBe(400);
@@ -42,7 +44,7 @@ describe("Auth - Register", () => {
     const response = await request(app)
       .post("/api/auth/register")
       .send({
-        email: "test@example.com",
+        email: `weak-pass-${Date.now()}@example.com`,
         password: "123"
       });
 
@@ -50,4 +52,3 @@ describe("Auth - Register", () => {
     expect(response.body).toHaveProperty("message");
   });
 });
-
