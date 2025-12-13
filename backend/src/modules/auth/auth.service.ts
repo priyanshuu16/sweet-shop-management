@@ -28,11 +28,18 @@ export class AuthService {
     }
 
     const token = jwt.sign(
-      { userId: user.id, email: user.email },
+      {
+        userId: user.id,
+        email: user.email,
+        role: user.role
+      },
       process.env.JWT_SECRET as string,
-      { expiresIn: "1h" }
+      {
+        expiresIn: "1h"
+      }
     );
 
     return { token };
   }
 }
+
