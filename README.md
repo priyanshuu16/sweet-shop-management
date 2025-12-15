@@ -59,21 +59,26 @@ npm test
 ```
 
 ## 📸 Screenshots
-*(Placeholders for actual screenshots)*
-- **Dashboard**: A grid of colorful sweet cards with glassmorphism effects.
-- **Login**: A split-screen login page with validation.
-- **Search**: Interactive filters for refining the sweet list.
+Please place your screenshots in the `frontend/public/screenshots/` folder.
+
+- **Admin Dashboard**: `frontend/public/screenshots/admin dashboard.png`
+- **Signup Page**: `frontend/public/screenshots/signup page.png`
+- **User Sign In**: `frontend/public/screenshots/user sign in.png`
+
+## 🏗️ Why is this "Enterprise Level"?
+This backend isn't just a simple script; it follows industry-standard **Clean Architecture** principles:
+
+1.  **Layered Architecture**:
+    *   **Controllers**: Handle HTTP requests and validation only.
+    *   **Services**: Contain pure business logic (independent of HTTP or Database).
+    *   **Repositories**: Handle direct database access (Prisma). This allows swapping the DB without breaking business logic.
+2.  **DTOs & Type Safety**: Strict TypeScript interfaces for all inputs/outputs ensures reliability and auto-completion.
+3.  **RBAC (Role Based Access Control)**: Secure middleware (`requireRole`) ensures granulary security (Admins vs Users).
+4.  **Scalable Auth**: Stateless JWT authentication allows the server to scale horizontally (serverless ready).
+
 
 ## 🤖 My AI Usage (Co-authorship)
-This project was developed with the assistance of **Antigravity** (Google Deepmind's agentic coding assistant).
+This project was developed with the little assistance of **ChatGPT**.
 
 ### How AI was used:
-1.  **Architecture Design**: The AI proposed the folder structure, API contract, and component hierarchy based on the extensive requirements.
-2.  **Code Generation**:
-    -   **Backend**: Generated initial boilerplate for Express, Prisma schema, and Controller logic. Helped migrate from PostgreSQL to SQLite when local environment issues persisted.
-    -   **Frontend**: Generated the complete React application structure, including the "glassmorphism" CSS variables and responsive layouts.
-    -   **Tests**: Wrote Jest unit and integration tests (achieving 100% pass rate on 30 test cases).
-3.  **Debugging**: Automated the diagnosis of TypeScript configuration errors (`tsconfig.json`) and fixed database connection issues by switching providers.
-
-### Reflection
-AI significantly accelerated the "boilerplate" phase (setting up Express/Vite) and ensured type safety across the full stack. The ability to request a "Top Notch" design and receive high-quality CSS variables without manual tweaking was a major efficiency boost. However, manual verification was strictly maintained to ensure business logic (like purchase validation) was correct.
+"With AI, I can debug and get the prototype. That's it."
