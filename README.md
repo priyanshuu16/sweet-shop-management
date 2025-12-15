@@ -9,14 +9,14 @@ A full-stack application to manage sweet inventory, pricing, and sales, featurin
     - **Authentication**: Secure Login and Registration forms.
     - **Admin Dashboard**: Manage inventory (Add, Edit, Delete sweets).
 - **Backend**: RESTful API built with Node.js, Express, and Prisma.
-    - **Database**: SQLite (Zero-config setup).
+    - **Database**: PostgreSQL (Production Ready).
     - **Security**: JWT Authentication and RBAC (User vs Admin).
     - **Search API**: Robust filtering endpoint.
 
 ## 🛠️ Technology Stack
 - **Frontend**: React, TypeScript, Vite, Vanilla CSS 3 (Custom Design), Lucide Icons, Axios.
 - **Backend**: Node.js, Express.js, TypeScript, Prisma ORM, JSON Web Token (JWT).
-- **Database**: SQLite (Local file-based).
+- **Database**: PostgreSQL (Render Compatible).
 - **Testing**: Jest, Supertest.
 
 ## ⚙️ Setup & Installation
@@ -24,23 +24,27 @@ A full-stack application to manage sweet inventory, pricing, and sales, featurin
 ### Prerequisites
 - Node.js (v18 or higher)
 - npm
+- PostgreSQL (or use Render)
 
 ### 1. Backend Setup
-The backend uses SQLite, so no external database installation is required.
 
 ```bash
 cd backend
 npm install
 
 # Setup Database & Migrations
-echo 'DATABASE_URL="file:./dev.db"' > .env
-echo 'JWT_SECRET="dev_secret_key"' >> .env
+# Note: Update .env with your PostgreSQL Connection String
 npx prisma migrate dev --name init
 
 # Start Server
 npm run dev
 # Server runs on http://localhost:3000
 ```
+
+### 2. Deployment (Render)
+This project is configured for **Render**.
+1.  **Backend**: `npm install && npm run build` (Start: `npm start`).
+2.  **Database**: Create a PostgreSQL instance on Render and link it.
 
 ### 2. Frontend Setup
 ```bash
