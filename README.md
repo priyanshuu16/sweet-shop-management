@@ -51,7 +51,7 @@ You can deploy the frontend to **Vercel** for better global performance.
 1.  **Import Project**: Import the `sweet-shop-frontend` repository on Vercel.
 2.  **Framework Preset**: Select "Vite".
 3.  **Environment Variables**:
-    *   `VITE_API_URL`: `https://sweet-shop-backend-2-u411.onrender.com` (Or your Render Backend URL)
+    *   `VITE_API_URL`: `https://sweet-shop-backend-gmj7.onrender.com`
 4.  **Deploy**.
 
 ### 2. Frontend Setup
