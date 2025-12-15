@@ -87,11 +87,11 @@ export const searchSweets = async (req: Request, res: Response) => {
   const where: any = {};
 
   if (name) {
-    where.name = { contains: String(name) };
+    where.name = { contains: String(name), mode: 'insensitive' };
   }
 
   if (category) {
-    where.category = { equals: String(category) };
+    where.category = { contains: String(category), mode: 'insensitive' };
   }
 
   if (minPrice || maxPrice) {
