@@ -40,5 +40,5 @@ npm run dev
 2.  **Framework Preset**: Select "Vite".
 3.  **Environment Variables**:
     *   `VITE_API_URL`: **(Your Render Backend URL)**
-        *   Example: `https://sweet-shop-backend-2-u411.onrender.com`
+        *   Example: `https://sweet-shop-backend-gmj7.onrender.com`
 4.  **Deploy**.
