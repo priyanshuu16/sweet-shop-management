@@ -39,6 +39,5 @@ npm run dev
 1.  **Import Project**: Import this repository (`sweet-shop-frontend`) on Vercel.
 2.  **Framework Preset**: Select "Vite".
 3.  **Environment Variables**:
-    *   `VITE_API_URL`: **(Your Render Backend URL)**
-        *   Example: `https://sweet-shop-backend-gmj7.onrender.com`
+    *   `VITE_API_URL`: `https://sweet-shop-backend-gmj7.onrender.com`
 4.  **Deploy**.
