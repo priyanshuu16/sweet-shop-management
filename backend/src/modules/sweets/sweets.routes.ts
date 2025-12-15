@@ -7,7 +7,8 @@ import {
   updateSweet,
   deleteSweet,
   purchaseSweet,
-  restockSweet
+  restockSweet,
+  searchSweets
 } from "./sweets.controller";
 
 const router = Router();
@@ -16,6 +17,7 @@ const router = Router();
 router.use(authMiddleware);
 
 // Public for authenticated users
+router.get("/search", searchSweets);
 router.get("/", getSweets);
 
 // USER actions

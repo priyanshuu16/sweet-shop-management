@@ -1,0 +1,20 @@
+
+> backend@1.0.0 test
+> jest
+
+PASS dist/middleware/auth.middleware.test.js
+PASS dist/modules/auth/auth.service.test.js
+PASS src/modules/auth/auth.repository.test.ts
+PASS dist/modules/auth/auth.test.js
+PASS dist/modules/sweets/__tests__/sweets.test.js
+PASS dist/modules/auth/auth.repository.test.js
+PASS src/modules/auth/auth.service.test.ts
+PASS src/modules/auth/auth.test.ts
+PASS src/middleware/auth.middleware.test.ts
+PASS src/modules/sweets/__tests__/sweets.test.ts
+
+Test Suites: 10 passed, 10 total
+Tests:       30 passed, 30 total
+Snapshots:   0 total
+Time:        3.19 s
+Ran all test suites.

@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import type { Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
@@ -79,5 +79,28 @@ export const deleteSweet = async (req: Request, res: Response) => {
 
   // IMPORTANT: return 200 (not 204) to satisfy tests
   return res.status(200).json({ message: "Deleted" });
+};
+
+export const searchSweets = async (req: Request, res: Response) => {
+  const { name, category, minPrice, maxPrice } = req.query;
+
+  const where: any = {};
+
+  if (name) {
+    where.name = { contains: String(name) };
+  }
+
+  if (category) {
+    where.category = { equals: String(category) };
+  }
+
+  if (minPrice || maxPrice) {
+    where.price = {};
+    if (minPrice) where.price.gte = Number(minPrice);
+    if (maxPrice) where.price.lte = Number(maxPrice);
+  }
+
+  const sweets = await prisma.sweet.findMany({ where });
+  return res.status(200).json(sweets);
 };
 

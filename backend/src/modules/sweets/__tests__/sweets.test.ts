@@ -74,6 +74,16 @@ describe("Sweets Module (RBAC + Inventory)", () => {
     expect(res.status).toBe(200);
   });
 
+  it("USER should search sweets by name", async () => {
+    const res = await request(app)
+      .get("/api/sweets/search?name=Gulab")
+      .set("Authorization", `Bearer ${userToken}`);
+
+    expect(res.status).toBe(200);
+    expect(Array.isArray(res.body)).toBeTruthy();
+    // Depends on test execution order, but at least checking it exists
+  });
+
   it("USER should NOT create sweet", async () => {
     const res = await request(app)
       .post("/api/sweets")

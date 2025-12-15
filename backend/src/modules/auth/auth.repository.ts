@@ -11,6 +11,7 @@ export interface UserEntity {
   id: string;
   email: string;
   passwordHash: string;
+  role: string;
 }
 
 export class AuthRepository {
@@ -25,7 +26,8 @@ export class AuthRepository {
     return {
       id: user.id,
       email: user.email,
-      passwordHash: user.passwordHash
+      passwordHash: user.passwordHash,
+      role: user.role
     };
   }
 
@@ -39,7 +41,8 @@ export class AuthRepository {
     return {
       id: user.id,
       email: user.email,
-      passwordHash: user.passwordHash
+      passwordHash: user.passwordHash,
+      role: user.role
     };
   }
 }
